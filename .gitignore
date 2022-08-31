@@ -1,0 +1,9 @@
+node_modules/
+.yarn/
+
+dist/
+npm-debug.*
+coverage/\*\*/*
+
+# macOS
+.DS_Store
