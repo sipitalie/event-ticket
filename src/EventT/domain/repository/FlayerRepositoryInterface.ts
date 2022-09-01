@@ -1,4 +1,4 @@
-import { Flayer } from "../entities/Event";
+import { Flayer } from "../entity/Flayer";
 
 export interface EventInterfaceRepository{
     save:(input:Input)=>Promise<string>;

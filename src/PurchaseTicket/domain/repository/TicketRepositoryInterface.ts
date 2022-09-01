@@ -1,6 +1,6 @@
-import { Ticket } from "../entitie/Ticket";
+import { Ticket } from "../entity/Ticket";
 
-export interface  PurchaseTicketRepositoryInterface{
+export interface  TicketRepositoryInterface{
     save_ticket(ticket:Ticket):Promise<string>,
     get_ticket(ticket_id:string):Promise<Ticket>,
 }
