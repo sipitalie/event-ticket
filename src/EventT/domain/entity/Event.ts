@@ -1,4 +1,4 @@
-import { Areas } from "./Areas";
+import { Area } from "./Area";
 import { Flayer } from "./Flayer";
 
 export type Event={
@@ -8,6 +8,6 @@ export type Event={
     created_at:string;
     flyers?:Flayer[];
     flyer?:Flayer;
-    areas:Areas[];
+    areas:Area[];
 }
 

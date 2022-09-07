@@ -1,9 +1,9 @@
-export type Areas={
+export interface Area{
     id:string;
     title:string;
     price:number;
-    status:string;//
     number_of_peaple:number;
     description?:string;
+    execute?:(input:any)=>Promise<string>
 
 }

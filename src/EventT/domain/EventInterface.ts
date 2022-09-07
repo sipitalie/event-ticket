@@ -1,4 +1,4 @@
-import { Event } from "./entities/Event";
+import { Event } from "./entity/Event";
 
 export interface EventInterface{
     create:(input:Input)=>Promise<string>;

@@ -5,7 +5,7 @@ import { PurchaseTicket } from '../src/PurchaseTicket/application/PurchaseTicket
 import { TicketRepositoryInMemory } from '../src/PurchaseTicket/repository/PurchaseTicketRepositoryInMemore';
 
 
-describe('TurchaseTicket switch test', () => {
+describe('Ticket switch test', () => {
   const id=randomUUID()
   const purchaseTicketRepsitory=new TicketRepositoryInMemory()
   test('save purchase ticket', async () => {
@@ -36,9 +36,6 @@ describe('TurchaseTicket switch test', () => {
     }catch(err:any){
       expect(err.message).toBe(new Error(`Ticket not found`).message);
 
-    }
-  
-   
-   
+    } 
   });
 });
