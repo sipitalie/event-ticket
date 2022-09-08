@@ -1,5 +1,6 @@
 import {randomUUID} from "node:crypto"
 import { Area } from "../domain/entity/Area";
+import { Event } from "../domain/entity/Event";
 import { EventInterfaceRepository } from "../domain/repository/EventRepositoryInterface";
 import { CreateArea } from "./CreateArea";
 import { CreateFlayer } from "./CreateFlayer";
@@ -7,33 +8,30 @@ import { CreateFlayer } from "./CreateFlayer";
 
 type EventDependeceObject={
     readonly eventRepository:EventInterfaceRepository;
-    readonly createArea:CreateArea;
-    readonly createFlayer:CreateFlayer;   
+    readonly createArea?:CreateArea;
+    readonly createFlayer?:CreateFlayer;   
 }
 export class CreateEvent {
-    constructor(readonly props: EventDependeceObject){  
-        
+    constructor(private readonly props: EventDependeceObject){  
     }
-
     async execute (input:Input):Promise<string>{
-        const id =randomUUID()
-        const areas = await this.props.createArea.execute({event_id:id,areas:input.areas})
-        const flayers= await this.props.createFlayer.execute({event_id:id,flyers:input.flyers})
-        await this.props.eventRepository.save_event({
-            owner_id:`user-${randomUUID()}`,
-            title:"Siga la Luna",
-            areas: areas,
-            flayers:flayers,
-            
+        const event = new Event({
+            event_date:input.event_date,
+            owner_id:input.owner_id,
+            title:input.title,
+            number_of_areas:input.number_of_areas
         })
-        return id
+        const event_id= await this.props.eventRepository.save(event)
+        return event_id
     };
    
 }
 
 type Input={
     owner_id:string;
+    event_date:string;
     title:string;
-    flyers:string[];
-    areas:Area[];
+    number_of_areas:number;
+    flyers?:string[];
+    areas?:string[];
 }

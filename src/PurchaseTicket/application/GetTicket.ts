@@ -7,7 +7,15 @@ export class GetTicket {
     }
     async execute(ticket_id:string):Promise<any>{
         const ticket= await  this.ticketRepository.get_ticket(ticket_id)
-        return  ticket
+        return {
+            id: ticket.id,
+            participantEmail: ticket.participantEmail,
+            price: ticket.price,
+            status: ticket.status,
+            ticket_category: ticket.ticket_category,
+            event_id: ticket.event_id,
+            date: ticket.date
+        } 
     }
 
 }
