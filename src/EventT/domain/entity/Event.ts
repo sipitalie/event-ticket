@@ -92,7 +92,7 @@ export class Event{
         this.flyer=flyer
     }
 
-    async addAreas(areas:string[]):Promise<void>{
+    addAreas(areas:string[]){
         if(areas.length===0){
             throw new Error("Empty areas list")
         }
