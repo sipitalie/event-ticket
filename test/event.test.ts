@@ -10,7 +10,7 @@ import {AddAreaEvent} from "../src/EventT/application/AddAreaEvent"
 const areaRepository=new AreaRepositoryInMemory()
 const eventRepository=new EventRepositoryInMemory()
 describe('Event switch test', () => {
-  const eventInput={event_date:"2022-09-13",number_of_areas:1,owner_id:"sipitale-22176",title:"Siga la luna"}
+  const eventInput={event_date:"2022-09-18",number_of_areas:1,owner_id:"sipitale-22176",title:"Siga la luna"}
   const oneAreaRequest=[{category:"Normal", number_of_peaple:1, price:3500}]
   const arrayFlayers=["file:///home/shinobi/Transfer%C3%AAncias/Screenshot%202022-07-15%20at%2015-26-59%20Junte-se%20%C3%A0%20yourShadow%20Ignite%20Lab.png"]
   let idEvent=""

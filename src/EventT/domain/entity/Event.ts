@@ -86,7 +86,7 @@ export class Event{
     }
 
     addFlyerMain(flyer:string){
-        if(!!flyer){
+        if(!flyer){
             throw new Error("Empty flayer url")
         }
         this.flyer=flyer

@@ -18,7 +18,6 @@ export class Area{
 
     constructor (readonly props:AreaProps){  
         if(props.category.length===0){
-
             throw new Error("Invalid category")
         }
         if(props.number_of_peaple<=0){
@@ -26,7 +25,8 @@ export class Area{
         }
 
         if(props.price<0){
-            throw new Error("Invalid category")    
+            console.log(props.price)
+            throw new Error("Invalid price")    
         }
         if(!!props.description&&props.description.length>256){
             throw new Error("Invalid description.length cannot be longer than 256 characters")    

@@ -6,9 +6,8 @@ type Props={
     readonly flyerRepository:FlyerInterfaceRepository;
 }
 export class AddFlyerEvent {
-    constructor(private readonly props: Props){     
-    }
-
+    constructor(private readonly props: Props){}
+    
     async execute (input:Input):Promise<void>{
         const event = await this.props.eventRepository.find(input.event_id)
         if(input.flyers.length===0){
