@@ -1,27 +1,19 @@
 import { randomUUID } from "crypto";
-export type FlayerProps={
+
+
+export type FlyerProps={
     id?:string;
     url_flyer:string;
     event_id:string;
    
 }
-export type EventProps={
-    id?:string
-    owner_id:string;
-    title:string;
-    event_date:string;
-    number_of_areas:number
-    created_at?:string;
-    flyers?:string[];
-    flyer?:string;
-    areas?:string[];
-}
-export class Flayer{
+
+export class Flyer{
     id:string;
     url_flyer:string;
     event_id:string;
     
-    constructor (private props:FlayerProps){ 
+    constructor (private props:FlyerProps){ 
         if(props.event_id.length<5){
             throw new Error("Invalid event_id")
         }

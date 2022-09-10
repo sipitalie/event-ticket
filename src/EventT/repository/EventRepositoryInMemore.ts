@@ -1,5 +1,4 @@
 import { EventInterfaceRepository } from "../domain/repository/EventRepositoryInterface";
-import { Area } from "../domain/entity/Area";
 import { Event } from "../domain/entity/Event";
 
 
