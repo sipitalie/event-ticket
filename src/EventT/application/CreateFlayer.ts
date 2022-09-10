@@ -3,7 +3,7 @@ import { FlayerInterfaceRepository } from "../domain/repository/FlayerRepository
 
 
 export class CreateFlayer{
-    constructor(readonly flayerRepository: FlayerInterfaceRepository){    
+    constructor(private flayerRepository: FlayerInterfaceRepository){    
     }
 
     async execute (input:Input):Promise<string[]>{

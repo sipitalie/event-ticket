@@ -13,18 +13,14 @@ const ticketRepository=new TicketRepositoryInMemory()
 const areaRepository=new AreaRepositoryInMemory()
 const eventRepository=new EventRepositoryInMemory()
 describe('Ticket switch test', () => {
-  
-
   let idTicket=""
-
-
   test('save purchase ticket', async () => {
-    const event=await new CreateEvent({eventRepository}).execute({event_date:"17/09/2022",number_of_areas:1,owner_id:"sipitale-22176",title:"Siga la luna"})
-    //const areasRequest=[{category:"Normal", number_of_peaple:1, price:3500},{category:"vip", number_of_peaple:1, price:15000}]
-    const oneAreaRequest=[{category:"Normal", number_of_peaple:1, price:3500}]
+    const event=await new CreateEvent({eventRepository}).execute({event_date:"2022-09-13",number_of_areas:1,owner_id:"sipitale-22176",title:"Siga la luna"})
+    const areasRequest=[{category:"Normal", number_of_peaple:1, price:3500},{category:"vip", number_of_peaple:1, price:15000}]
+    //const oneAreaRequest=[{category:"Normal", number_of_peaple:1, price:3500}]
     const arrayFlayers=["file:///home/shinobi/Transfer%C3%AAncias/Screenshot%202022-07-15%20at%2015-26-59%20Junte-se%20%C3%A0%20yourShadow%20Ignite%20Lab.png"]
 
-    const areas =await new CreateArea(areaRepository).execute({areas:oneAreaRequest,event_id:event})
+    const areas =await new CreateArea(areaRepository).execute({areas:areasRequest,event_id:event})
   
     await new AddAreaEvent({areaRepository,eventRepository}).execute({event_id:event,areas})
     

@@ -17,6 +17,21 @@ export class Area{
     description?:string;
 
     constructor (readonly props:AreaProps){  
+        if(props.category.length===0){
+
+            throw new Error("Invalid category")
+        }
+        if(props.number_of_peaple<=0){
+            throw new Error("Invalid number of peaple")
+        }
+
+        if(props.price<0){
+            throw new Error("Invalid category")    
+        }
+        if(!!props.description&&props.description.length>256){
+            throw new Error("Invalid description.length cannot be longer than 256 characters")    
+        }
+
         this.id=randomUUID()
         this.price=props.price
         this.number_of_peaple=props.number_of_peaple

@@ -13,6 +13,10 @@ export class AddAreaEvent {
 
     async execute (input:Input):Promise<void>{
         const event = await this.props.eventRepository.find(input.event_id)
+        if(event.number_of_areas!==input.areas.length){
+            throw new Error("Invalid number of areas")
+        }
+        
         event.addAreas(input.areas)
         await this.props.eventRepository.save(event)
     };

@@ -1,18 +1,12 @@
-import {randomUUID} from "node:crypto"
-import { Area } from "../domain/entity/Area";
 import { Event } from "../domain/entity/Event";
 import { EventInterfaceRepository } from "../domain/repository/EventRepositoryInterface";
-import { CreateArea } from "./CreateArea";
-import { CreateFlayer } from "./CreateFlayer";
 
 
 type EventDependeceObject={
-    readonly eventRepository:EventInterfaceRepository;
-    readonly createArea?:CreateArea;
-    readonly createFlayer?:CreateFlayer;   
+    readonly eventRepository:EventInterfaceRepository;  
 }
 export class CreateEvent {
-    constructor(private readonly props: EventDependeceObject){  
+    constructor(private props: EventDependeceObject){  
     }
     async execute (input:Input):Promise<string>{
         const event = new Event({

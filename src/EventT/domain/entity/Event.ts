@@ -1,5 +1,5 @@
 import { randomUUID } from "crypto";
-
+import {isBefore, parseISO, isAfter, addDays, isValid} from "date-fns"
 export type EventProps={
     id?:string
     owner_id:string;
@@ -23,7 +23,20 @@ export class Event{
     flyer:string;
     areas:string[];
 
-    constructor (private readonly props:EventProps){  
+    constructor (private props:EventProps){ 
+        const ThreeDaysFromToday=addDays(new Date(), 3)
+        if(props.number_of_areas<0){
+            throw new Error("Invalid number of areas")
+        }
+       
+        if(!isValid(parseISO(props.event_date))){
+            throw new Error("Invalid Date")
+        }
+
+        if(isBefore(parseISO(props.event_date),ThreeDaysFromToday)){
+            throw new Error("The event date must be more than three days from today's date")    
+        }
+
         this.id=!!props.id?props.id:randomUUID()
         this.owner_id=props.owner_id
         this.title=props.title
