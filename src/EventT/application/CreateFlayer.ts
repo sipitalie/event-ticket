@@ -1,25 +1,31 @@
 import {randomUUID} from "node:crypto"
-import { FlayerInterfaceRepository } from "../domain/repository/FlayerRepositoryInterface";
+import { Flyer } from "../domain/entity/Flyer";
+import { FlyerInterfaceRepository } from "../domain/repository/FlyerRepositoryInterface";
 
 
 export class CreateFlayer{
-    constructor(private flayerRepository: FlayerInterfaceRepository){    
+    constructor(private flyerRepository: FlyerInterfaceRepository){    
     }
 
     async execute (input:Input):Promise<string[]>{
-        let flayers= []
+        let flyers= []
         for( let value of input.flyers){
-            const flayer = await this.flayerRepository.save({
+            const flyer =new Flyer({
                 event_id:input.event_id,
-                id:randomUUID(),
-                url:value    
+                url_flyer:value
             })
-            flayers.push(flayer)
+            const flyer_id = await this.flyerRepository.save({
+                url:flyer.url_flyer,
+                id:flyer.id,
+                event_id:flyer.id
+            })
+            flyers.push(flyer_id)
         }
-        return flayers
+        return flyers
     };
    
 }
+
 
 type Input={
     event_id:string;
