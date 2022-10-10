@@ -2,7 +2,7 @@ import {describe, expect, test} from '@jest/globals';
 import {randomUUID} from "node:crypto"
 import { GetTicket } from '../src/PurchaseTicket/application/GetTicket';
 import { PurchaseTicket } from '../src/PurchaseTicket/application/PurchaseTicket';
-import { TicketRepositoryInMemory } from '../src/PurchaseTicket/repository/PurchaseTicketRepositoryInMemore';
+import { TicketRepositoryInMemory } from '../src/PurchaseTicket/infra/repository/PurchaseTicketRepositoryInMemore';
 import {AreaRepositoryInMemory} from "../src/EventT/repository/AreaRepositoryInMemore"
 import { EventRepositoryInMemory } from '../src/EventT/repository/EventRepositoryInMemore';
 import { CreateArea } from '../src/EventT/application/CreateArea';
@@ -19,7 +19,7 @@ const flyerRepository=new FlyerRepositoryInMemory()
 describe('Ticket switch test', () => {
   let idTicket=""
   test('save purchase ticket', async () => {
-    const event=await new CreateEvent({eventRepository}).execute({event_date:"2022-09-17",number_of_areas:2,owner_id:"sipitale-22176",title:"Siga la luna"})
+    const event=await new CreateEvent({eventRepository}).execute({event_date:"2022-10-17",number_of_areas:2,owner_id:"sipitale-22176",title:"Siga la luna"})
     const areasRequest=[{category:"Normal", number_of_peaple:1, price:3500},{category:"vip", number_of_peaple:1, price:15000}]
     //const oneAreaRequest=[{category:"Normal", number_of_peaple:1, price:3500}]
     const arrayFlayers=["file:///home/shinobi/Transfer%C3%AAncias/Screenshot%202022-07-15%20at%2015-26-59%20Junte-se%20%C3%A0%20yourShadow%20Ignite%20Lab.png"]

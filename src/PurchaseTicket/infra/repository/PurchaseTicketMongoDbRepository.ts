@@ -1,7 +1,7 @@
-import { TicketRepositoryInterface } from "../domain/repository/TicketRepositoryInterface";
-import { Ticket } from "../domain/entity/Ticket";
+import { TicketRepositoryInterface } from "../../domain/repository/TicketRepositoryInterface";
+import { Ticket } from "../../domain/entity/Ticket";
 
-export  class TicketRepositoryInMemory implements  TicketRepositoryInterface{
+export  class PurchaseTicketRepositoryInMemory implements  TicketRepositoryInterface{
     tickets:Ticket[]
     constructor(){
         this.tickets=[]
